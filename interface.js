@@ -8,12 +8,12 @@ let backspace_button = document.querySelectorAll(".option-button")[1];
 
 //------------- Objects ---------------------------
 let exp = {
-    nums: new Array(2),
+    nums: ["", ""],
     current: 0,
     op: "",
     error: false,
     clear(){
-        this.nums = [undefined, undefined];
+        this.nums = ["", ""];
         this.op = "";
         this.current = 0;
         this.result = 0;
@@ -32,7 +32,7 @@ function calculate(){
     screen_lines[0].value = screen_lines[1].value;
     let result = operate(exp.op, parseFloat(exp.nums[0]), parseFloat(exp.nums[1]));
     exp.clear();
-    exp.nums[0] = result;
+    exp.nums[0] = `${result}`;
     screen_lines[1].value = `${Math.round(exp.nums[0] * 1000)/1000}`;
 }
 
@@ -49,7 +49,7 @@ backspace_button.addEventListener("click", ()=>{
     if(exp.error) return;
     screen_lines[1].value = screen_lines[1].value.substring(0, screen_lines[1].value.length - 1);
     if(exp.op === ""){ exp.nums[0] = exp.nums[0].substring(0, exp.nums[0].length - 1); }
-    else if (exp.op !== "" && exp.nums[1] === undefined){ exp.op = ""; }
+    else if (exp.op !== "" && exp.nums[1] === ""){ exp.op = ""; }
     else {
         exp.nums[1] = exp.nums[1].substring(0, exp.nums[1].length - 1);
     }
@@ -63,7 +63,7 @@ keys.forEach(key => {
     if(HTML_key.textContent.match(/\d/)){
         HTML_key.addEventListener("click", ()=> {
             if(exp.error) return;
-            if(exp.nums[exp.current] === undefined){
+            if(exp.nums[exp.current] === ""){
                 exp.nums[exp.current] = HTML_key.textContent;
             } else {
                 exp.nums[exp.current] += HTML_key.textContent;
@@ -76,7 +76,7 @@ keys.forEach(key => {
             case ".":
                 HTML_key.addEventListener("click", ()=>{
                     if(exp.error) return;
-                    if(exp.nums[exp.current] === undefined){
+                    if(exp.nums[exp.current] === ""){
                         screen_lines[1].value += "0.";
                         exp.nums[exp.current] = "0.";
                     }else if (!exp.nums[exp.current].includes(".")){
@@ -92,7 +92,7 @@ keys.forEach(key => {
                 HTML_key.addEventListener("click", ()=>{
                     if(exp.error) return;
                     if(screen_lines[1].value.length === 0) return;
-                    if(exp.current === 1 && exp.nums[1] !== undefined){
+                    if(exp.current === 1 && exp.nums[1] !== ""){
                         calculate();
                         if(!exp.error){
                             exp.current = 1;
@@ -110,8 +110,8 @@ keys.forEach(key => {
                 });
                 break;
             case "=":
-                HTML_key.addEventListener("click", ()=>{
-                    if(exp.nums[0] === undefined || exp.nums[1] === undefined) return;
+                HTML_key.addEventListener("click", ()=>{``
+                    if(exp.nums[0] === "" || exp.nums[1] === "") return;
                     calculate();
                 });
                 break;
