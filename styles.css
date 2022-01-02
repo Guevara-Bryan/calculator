@@ -1,0 +1,117 @@
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+:root{
+    --screen-width: 90%;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1e8e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#frame{
+    background-color: #f55951;
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 10vh;
+}
+
+#my-name, #my-name:visited{
+    margin-bottom: 10px;
+    font-size: 15pt;
+    color: rgb(67, 95, 102);
+    text-decoration: none;
+}
+
+
+#screen-container{
+    height: 20%;
+    width: var(--screen-width, 85%);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.screen-line{
+    color: white;
+    font-size: 20pt;
+    height: 50%;
+    width: 100%;
+    background-color: rgb(67, 95, 102);
+    box-shadow: none;
+    border:none;
+    display: flex;
+    padding: 10px;
+}.screen-line:nth-child(1){
+    border-radius: 10px 10px 0px 0px;
+    text-align: start;
+}
+.screen-line:nth-child(2){
+    border-radius: 0px 0px 10px 10px;
+    text-align: end;
+}
+.screen-line::placeholder{
+    color:white
+}
+
+#clear-container{
+    display: block;
+    width: var(--screen-width, 85%);
+}
+
+#clear-button{
+    height: 40px;
+    width: 80px;
+    border-radius: 10px;
+    border:none;
+    margin: auto;
+    font-size: 17pt;
+    transition: transform 200ms;
+}
+#clear-button:hover{
+    transform: scale(1.05);
+}
+#clear-button:active{
+    transform: scale(1);
+}
+
+#keypad{
+    height: 60%;
+    width: var(--screen-width, 85%);
+    background-color: #543c52;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 10px;
+}
+
+.key{
+    flex: 1 0 25%;
+    background-color: rgb(238, 238, 238);
+    height: 70px;
+    width: 70px;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 17pt;
+    border: none;
+    transition: box-shadow 100ms, transform 100ms;
+}
+.key:hover{
+    transform: scale(1.05);
+}
+.key:active{
+    transform: scale(1);
+}
