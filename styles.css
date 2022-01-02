@@ -68,12 +68,12 @@
     color:white
 }
 
-#clear-container{
+#option-container{
     display: block;
     width: var(--screen-width, 85%);
 }
 
-#clear-button{
+.option-button{
     height: 40px;
     width: 80px;
     border-radius: 10px;
@@ -81,11 +81,13 @@
     margin: auto;
     font-size: 17pt;
     transition: transform 200ms;
+}.option-button:nth-child(2){
+    margin-left: 10px;
 }
-#clear-button:hover{
+.option-button:hover{
     transform: scale(1.05);
 }
-#clear-button:active{
+.option-button:active{
     transform: scale(1);
 }
 
